@@ -34,7 +34,7 @@ var		VoltsPorUnidade= 185,
 // Create client to connect to the IoT Hub using the device connection string and the HTTP protocol
 var connectionString = "HostName=SmartMeter.azure-devices.net;DeviceId=SmartMeter;SharedAccessKey=dk/bWwxT5sXi5a5/FijqWu1NTOfT8y/wtntK99+gw9w=";
 var client = Client.fromConnectionString(connectionString, Protocol);
-var sendInterval = {timerGet: 2000, timerSend: 2000};//loop handler
+var sendInterval = {timerGet: 3000, timerSend: 3000};//loop handler
 
 // Data to be sent
 var timenow,Armss0,Armss1,Armss2,Armss3,Ps0,Ps1,Ps2,Ps3 ;
