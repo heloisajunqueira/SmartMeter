@@ -35,7 +35,7 @@ copiado para a pasta `/lib/systemd/system` e habilitado o serviço. Os passos se
     cp Meter.service /lib/systemmd/system
     systemctl enable Meter.service
     
-Para esta função de iniciação automática do programa seguem alguns comandos importantes e que estão comentadas suas funções:
+Para esta função de iniciação automática do programa seguem alguns comandos importantes:
     
     Systemctl start Meter.service    // irá reiniciar a execução automático do programa  
     Systemctl status Meter.service  -l   //mostra o status da execução do programa detalhadamente, adicionando-se o -l detalha-se o processo
