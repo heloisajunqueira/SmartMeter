@@ -1,7 +1,7 @@
 
 #README for SendData.js
 
-##Read Sensor 
+##Ler o Sensor  
 
 O sensor utilizado é ACS712 para 5V, a função que irá armazenar a leitura deste sensor no ADC será a função getAllSensors(),que irá fazer uma chamada a função rdADC(). Esta função rdADC() irá ler o arquivo que contém os dados da leitura do ADC, o acesso a este arquivo está descrito neste link de referência da Toradex. Esta mesma função também faz a conversão do valor lido, que foi feita usando a equação abaixo:
 
@@ -11,7 +11,7 @@ O sensor utilizado é ACS712 para 5V, a função que irá armazenar a leitura de
     
  A resolução deste conversor é de 185 mV/A, então declaramos a resolução do conversor como sendo 185. 
  
-##Send Data to IoT Hub
+##Enviar dados para IoT Hub
  
 Passando agora para a parte de envio dos dados para a nuvem temos duas principais funções :
 
@@ -29,6 +29,8 @@ de enviando para IoT e o formato da string encapsulada e através do portal do I
 enviadas para o IoT Hub:
 
     Nodemon SendData.js
+
+##Iniciar automaticamente o envio de dados ao ligar o módulo
 
 Para configurar o programa para que sempre ao ligar o módulo o programa seja iniciado e executado automaticamente foi utilizado
 um script de inicialização. Para isso foi criado o script init.sh que é executado através do arquivo Meter.service que deve ser
