@@ -1,11 +1,11 @@
 
 # SmartMeter
-Is a repository that describe the programs that used in the project.
-This project consist in a Demo that send current measured in 4 outlets to the cloud, using services of Microsoft Azure and the module of Toradex.
+
+This project consist in a Demo that send current measured in 4 outlets to the cloud, was used services of Microsoft Azure and get the data was used the module of Toradex.
 
 ## Brief explanation of the Steps 
 
-To send the data to cloud is used the protocol HTTP and to recive this data in the cloud was used the platform [IoT Hub](https://azure.microsoft.com/pt-br/services/iot-hub/), for process this data was used the [Stream Analytics](https://azure.microsoft.com/pt-pt/services/stream-analytics/).  And to make the grafics to help the analysis of this data and give some insights was used the [Power BI](https://powerbi.microsoft.com/pt-br/). The services IoT Hub and Stream analytics and the Power BI are Microsoft's tools.  
+To send the data to cloud was used the protocol HTTP and to recive this data in the cloud was used the platform [IoT Hub](https://azure.microsoft.com/pt-br/services/iot-hub/), for process this data in the cloud was used the [Stream Analytics](https://azure.microsoft.com/pt-pt/services/stream-analytics/).  And to make the grafics to help the analysis of this data and give some insights was used the [Power BI](https://powerbi.microsoft.com/pt-br/). The services IoT Hub and Stream analytics and the Power BI are Microsoft's tools.  
  
 ## Materials
 
