@@ -1,0 +1,68 @@
+-- Irms
+SELECT
+System.Timestamp AS myTimestamp,
+    ObjectName as SensorSmartMeter,
+    
+    --Última corrente medida
+    LAST(Armss0) OVER (PARTITION BY ObjectName LIMIT DURATION(ss, 3) WHEN Armss0 IS NOT NULL) AS Last_Irms0,
+    LAST(Armss1) OVER (PARTITION BY ObjectName LIMIT DURATION(ss, 3) WHEN Armss1 IS NOT NULL) AS Last_Irms1,
+    LAST(Armss2) OVER (PARTITION BY ObjectName LIMIT DURATION(ss, 3) WHEN Armss2 IS NOT NULL) AS Last_Irms2,
+    LAST(Armss3) OVER (PARTITION BY ObjectName LIMIT DURATION(ss, 3) WHEN Armss3 IS NOT NULL) AS Last_Irms3,
+   
+   --Corrente ao longo do tempo
+   Armss0 AS Sensor0,
+   Armss1 AS Sensor1, 
+   Armss2 AS Sensor2,
+   Armss3 AS Sensor3
+
+INTO
+    DataSmartMeter
+FROM
+    smartmeter 
+ObjectName 
+
+
+
+-- Consumo [KWh]
+SELECT 
+System.Timestamp AS myTimestamp,
+    ObjectName as SensorSmartMeter2,
+   
+    -- Consumo total por sensor ao longo do tempo
+    (SUM(Ps0)/1000)*3 AS Sensor0,
+    (SUM(Ps1)/1000)*3 AS Sensor1,
+    (Sum(Ps2)/1000)*3 AS Sensor2,
+    (SUM(Ps3)/1000)*3 AS Sensor3,
+
+    
+    -- Consumo total por cômodos da casa
+    (SUM(Ps0)/1000)*3 AS Banheiro,
+    (SUM(Ps1)/1000)*3 AS Sala_De_Estar,
+    (Sum(Ps2)/1000)*3 AS Cozinha,
+    (SUM(Ps3)/1000)*3 AS Quarto
+
+INTO
+    DataSmartMeter2
+FROM 
+    smartmeter
+GROUP BY 
+    TumblingWindow(hh, 1),  
+ObjectName
+
+
+
+-- Consumo Total [KWh]
+SELECT
+System.Timestamp AS myTimestamp,
+    ObjectName as SensorSmartMeter3, 
+    
+    --Consumo total de todos os sensores ao longo do tempo
+ ((SUM(Ps0)/1000)+(SUM(Ps1)/1000)+(SUM(Ps2)/1000)+(SUM(Ps3)/1000))*3 AS Potencia_Total
+
+INTO
+    DataSmartMeter3
+FROM
+    smartmeter 
+GROUP BY 
+    TumblingWindow(hh, 1),
+ObjectName
