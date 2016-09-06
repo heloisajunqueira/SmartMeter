@@ -1,7 +1,7 @@
 
 # SmartMeter
-Is a repository that describe the programs that used in the project
-This project consist in a Demo that send the data of current in 4 plugs to the cloud, using services of Microsoft Azure.
+Is a repository that describe the programs that used in the project.
+This project consist in a Demo that send current measured in 4 outlets to the cloud, using services of Microsoft Azure and the module of Toradex.
 
 ## Brief explanation of the Steps 
 
