@@ -4,11 +4,11 @@ A Query deste exemplo recebe os dados de corrente e potência instantânea, para
 
 ## Irms
 
-Para a saída utilizando dados de corrente,neste caso não utilisei nenhum tipo de agrupamento de dados simplesmente enviei os dados de entrada para a saída, sem nenhuma manipulação. Porém se caso eu selecionasse somente uma saída e tivesse que utilizar o agrupamento destes dados poderia ser utilizada a função LAST que pega os últimos dados lidos no período que achar mais conveniente, coloquei o intervalo como sendo de 3 segundos, pois é a janela de amostragem que meu programa que faz a leitura dos sensores e envia os dados para a nuvem utiliza, então eu estaria pegando cada dado enviado para a nuvem.
+Para a saída utilizando dados de corrente,neste caso não utilisei nenhum tipo de agrupamento de dados simplesmente enviei os dados de entrada para a saída, sem nenhuma manipulação. Porém se caso eu selecionasse somente uma saída e tivesse que utilizar o agrupamento destes dados poderia ser utilizada a função `LAST` que pega os últimos dados lidos no período que achar mais conveniente, coloquei o intervalo como sendo de 3 segundos, pois é a janela de amostragem que meu programa que faz a leitura dos sensores e envia os dados para a nuvem utiliza, então eu estaria pegando cada dado enviado para a nuvem.
 
 ##Consumo [KWh]
 
-Somente para ilustrar o cálculo aproximado do consumo de cada sensor ao longo de 1 hora, que é o caso da segunda saída, pegamos a soma das potências lidas através da função SUM(), e multiplicamos por 3, que é a janela de tempo utilizada nas medições, e ao agrupar estes dados em uma janela de 1 hora, através da função TumblingWindow(hh, 1), obtivemos os cálculos do consumo em KWh de um aparelho ligado a esta tomada. 
+Somente para ilustrar o cálculo aproximado do consumo de cada sensor ao longo de 1 hora, que é o caso da segunda saída, pegamos a soma das potências lidas através da função `SUM()`, e multiplicamos por 3, que é a janela de tempo utilizada nas medições, e ao agrupar estes dados em uma janela de 1 hora, através da função `TumblingWindow(hh, 1)`, obtivemos os cálculos do consumo em KWh de um aparelho ligado a esta tomada. 
 
 ##Consumo Total [KWh]
 
