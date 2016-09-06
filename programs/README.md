@@ -1,6 +1,7 @@
-README for Send Data 
 
- O sensor utilizado é ACS712 para 5V, a função que irá armazenar a leitura deste sensor no ADC será a função getAllSensors(),que irá fazer uma chamada a função rdADC(). Esta função rdADC() irá ler o arquivo que contém os dados da leitura do ADC, o acesso a este arquivo está descrito neste link de referência da Toradex. Esta mesma função também faz a conversão do valor lido, que foi feita usando a equação abaixo:
+#README for SendData.js
+
+O sensor utilizado é ACS712 para 5V, a função que irá armazenar a leitura deste sensor no ADC será a função getAllSensors(),que irá fazer uma chamada a função rdADC(). Esta função rdADC() irá ler o arquivo que contém os dados da leitura do ADC, o acesso a este arquivo está descrito neste link de referência da Toradex. Esta mesma função também faz a conversão do valor lido, que foi feita usando a equação abaixo:
 
     Vp=((Vmax-Vmin)*(nivel de tensão do pino ADC))/((resolução do conversor ADC))
     Vrms= (Vp*√2)/2 
