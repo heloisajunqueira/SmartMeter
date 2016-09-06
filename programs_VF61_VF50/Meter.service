@@ -1,0 +1,10 @@
+[Unit]
+Description=Smart Meter
+After=multi-user.target
+ 
+[Service]
+Type=simple
+ExecStart=/home/root/init.sh
+ 
+[Install]
+WantedBy=multi-user.target
