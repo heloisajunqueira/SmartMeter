@@ -8,27 +8,27 @@ var Message = require('azure-iot-device').Message;
 
 var fs = require('fs');
 var   	ADC0 = '0',  
-		ADC1 = '1',
-		ADC2 = '0',
-		ADC3 = '1';
-var		VoltsPorUnidade= 185,
-		i,
-		V_aux = require('vectors/mag')(60),
-		V_aux,
-		minValue,
-		maxValue,
-		Vp,
-		Vrms,
-		Arms,
-		Vrmsl,                //Vrms da linha 
-		ArmsS0,
-		ArmsS1,
-		ArmsS2,
-		ArmsS3,
-		PS0,
-		PS1,
-		PS2,
-		PS3;
+	ADC1 = '0',
+	ADC2 = '0',
+	ADC3 = '0';
+var	VoltsPorUnidade= 185,
+	i,
+	V_aux = require('vectors/mag')(60),
+	V_aux,
+	minValue,
+	maxValue,
+	Vp,
+	Vrms,
+	Arms,
+	Vrmsl,                //Vrms da linha 
+	ArmsS0,
+	ArmsS1,
+	ArmsS2,
+	ArmsS3,
+	PS0,
+	PS1,
+	PS2,
+	PS3;
 
 
 // Create client to connect to the IoT Hub using the device connection string and the HTTP protocol
@@ -50,13 +50,13 @@ function getAllSensors() {
 	var d = new Date();
 	timenow = d.getTime();// get board time (in Epoch time)
 	//console.log("Inicia Leitura...")
-	ArmsS0 = rdGPIO(ADC0, '8');
+	ArmsS0 = rdGPIO(ADC0, '0'); 
 	PS0=ArmsS0*Vrmsl;
-	ArmsS1 = rdGPIO(ADC1, '8');
+	ArmsS1 = rdGPIO(ADC1, '1');
 	PS1=ArmsS1*Vrmsl;
-	ArmsS2 = rdGPIO(ADC2, '9');
+	ArmsS2 = rdGPIO(ADC2, '2');
 	PS2=ArmsS2*Vrmsl;
-	ArmsS3 = rdGPIO(ADC3, '9');
+	ArmsS3 = rdGPIO(ADC3, '3');
 	PS3=ArmsS3*Vrmsl;
 }
 
