@@ -12,4 +12,6 @@ Somente para ilustrar o cálculo aproximado do consumo de cada sensor ao longo d
 
 ##Consumo Total [KWh]
 
-Já para a terceira saída calculamos a potência aproximada total de todos os sensores, somente somando as potências totais de cada sensor calculada na saída anterior.  Estes cálculos utilizados são uma forma aproximada da potência consumida em KWh, para ter um cálculo do real consumo deve-se lançar mão de fórmulas que envolvam o cálculo da integral desta potência no tempo analisado, uma vez que a finalidade deste artigo é somente ilustrar o envio de dados e análise e visualização dos mesmos, não nos preocupamos com uma análise fiel dos dados de consumo.
+Já para a terceira saída calculamos a potência aproximada total de todos os sensores, somente somando as potências totais de cada sensor calculada na saída anterior.  
+
+Estes cálculos utilizados são uma forma aproximada da potência consumida em KWh, para obter um cálculo do real consumo deve-se lançar mão de fórmulas que envolvam o cálculo da integral desta potência no tempo analisado, uma vez que a finalidade deste artigo é somente ilustrar o envio de dados e análise e visualização dos mesmos, não nos preocupamos com uma análise matemática fiel dos dados de consumo.
