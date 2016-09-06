@@ -1,4 +1,4 @@
-#README QUERY.txt
+#README Query.txt
 
 A Query deste exemplo recebe os dados de corrente e potência instantânea, para a manipulação destes dados separei os mesmos em 3 saídas, criando 3 outputs seguindo os passos anteriores e utilizando a mesma entrada como IoT Hub criado, a primeira saída enviando somente dados de corrente, a segunda dados de potência por sensor e a terceira dados de potência total.
 
