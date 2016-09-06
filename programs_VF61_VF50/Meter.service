@@ -4,7 +4,7 @@ After=multi-user.target
  
 [Service]
 Type=simple
-ExecStart=/home/root/init.sh
+ExecStart=/home/root/SmartMeter/programs_VF61_VF50/init.sh
  
 [Install]
 WantedBy=multi-user.target
