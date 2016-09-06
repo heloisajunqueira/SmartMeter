@@ -62,7 +62,6 @@ function rdGPIO(number){
 	maxValue=0;
 	minValue=4096;
 	for(i=0;i<100;i++){
-		root@colibri-imx7:#
 		V_aux[i]= fs.readFileSync('/sys/bus/platform/devices/30610000.adc/iio:device0/in_voltage'+number+'_raw');
 		if (V_aux[i]<minValue){
 			minValue=V_aux[i];
