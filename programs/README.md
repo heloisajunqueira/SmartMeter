@@ -2,6 +2,7 @@
 #README for SendData.js
 
 ##Read Sensor 
+
 O sensor utilizado é ACS712 para 5V, a função que irá armazenar a leitura deste sensor no ADC será a função getAllSensors(),que irá fazer uma chamada a função rdADC(). Esta função rdADC() irá ler o arquivo que contém os dados da leitura do ADC, o acesso a este arquivo está descrito neste link de referência da Toradex. Esta mesma função também faz a conversão do valor lido, que foi feita usando a equação abaixo:
 
     Vp=((Vmax-Vmin)*(nivel de tensão do pino ADC))/((resolução do conversor ADC))
@@ -11,6 +12,7 @@ O sensor utilizado é ACS712 para 5V, a função que irá armazenar a leitura de
  A resolução deste conversor é de 185 mV/A, então declaramos a resolução do conversor como sendo 185. 
  
  ##Send Data to IoT Hub
+ 
  Passando agora para a parte de envio dos dados para a nuvem temos duas principais funções :
 
     sendInterval.handlerGet = setInterval(getAllSensors, sendInterval.timerGet);
