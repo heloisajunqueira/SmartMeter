@@ -11,7 +11,7 @@ O sensor utilizado é ACS712 para 5V, a função que irá armazenar a leitura de
     
  A resolução deste conversor é de 185 mV/A, então declaramos a resolução do conversor como sendo 185. 
  
- ##Send Data to IoT Hub
+##Send Data to IoT Hub
  
 Passando agora para a parte de envio dos dados para a nuvem temos duas principais funções :
 
