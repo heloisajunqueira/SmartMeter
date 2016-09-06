@@ -5,7 +5,7 @@ This project consist in a Demo that send the data of current in 4 plugs to the c
 
 ## Brief of the Steps of the project
 
-To send the data to cloud is used the protocol HTTP and to recive this data in the cloud was used the platform IoT Hub, for process this data was used the Stream Analytics.  And to make the grafics to help the analysis of this data and give some insights was used the Power BI. The services IoT Hub and Stream analytics and the Power BI are Microsoft's tools.  
+To send the data to cloud is used the protocol HTTP and to recive this data in the cloud was used the platform [IoT Hub](https://azure.microsoft.com/pt-br/services/iot-hub/), for process this data was used the [Stream Analytics](https://azure.microsoft.com/pt-pt/services/stream-analytics/).  And to make the grafics to help the analysis of this data and give some insights was used the [Power BI](https://powerbi.microsoft.com/pt-br/). The services IoT Hub and Stream analytics and the Power BI are Microsoft's tools.  
  
 ## Materials used in the project
 
