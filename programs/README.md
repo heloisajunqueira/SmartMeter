@@ -13,7 +13,7 @@ O sensor utilizado é ACS712 para 5V, a função que irá armazenar a leitura de
  
  ##Send Data to IoT Hub
  
- Passando agora para a parte de envio dos dados para a nuvem temos duas principais funções :
+Passando agora para a parte de envio dos dados para a nuvem temos duas principais funções :
 
     sendInterval.handlerGet = setInterval(getAllSensors, sendInterval.timerGet);
     sendInterval.handlerSend = setInterval(sendToIotHub, sendInterval.timerSend);
