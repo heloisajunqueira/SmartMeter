@@ -7,10 +7,6 @@ var Client = require('azure-iot-device').Client;
 var Message = require('azure-iot-device').Message;
 
 var fs = require('fs');
-var   	ADC0 = '0',  
-	ADC1 = '0',
-	ADC2 = '0',
-	ADC3 = '0';
 var	VoltsPorUnidade= 185,
 	i,
 	V_aux = require('vectors/mag')(60),
@@ -50,23 +46,24 @@ function getAllSensors() {
 	var d = new Date();
 	timenow = d.getTime();// get board time (in Epoch time)
 	//console.log("Inicia Leitura...")
-	ArmsS0 = rdGPIO(ADC0, '0'); 
+	ArmsS0 = rdGPIO('0'); 
 	PS0=ArmsS0*Vrmsl;
-	ArmsS1 = rdGPIO(ADC1, '1');
+	ArmsS1 = rdGPIO('1');
 	PS1=ArmsS1*Vrmsl;
-	ArmsS2 = rdGPIO(ADC2, '2');
+	ArmsS2 = rdGPIO('2');
 	PS2=ArmsS2*Vrmsl;
-	ArmsS3 = rdGPIO(ADC3, '3');
+	ArmsS3 = rdGPIO('3');
 	PS3=ArmsS3*Vrmsl;
 }
 
 //Function that reads data from sensor
-function rdGPIO(pin, number){ 
+function rdGPIO(number){ 
 	/*---------- Leitura AC  -----------*/  
 	maxValue=0;
 	minValue=4096;
 	for(i=0;i<100;i++){
-		V_aux[i]= fs.readFileSync('/sys/devices/soc.2/30400000.aips-bus/30610000.adc/iio:device' + pin + '/in_voltage'+number+'_raw');
+		root@colibri-imx7:#
+		V_aux[i]= fs.readFileSync('/sys/bus/platform/devices/30610000.adc/iio:device0/in_voltage'+number+'_raw');
 		if (V_aux[i]<minValue){
 			minValue=V_aux[i];
 		}
