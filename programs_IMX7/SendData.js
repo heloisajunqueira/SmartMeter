@@ -66,7 +66,7 @@ function rdGPIO(pin, number){
 	maxValue=0;
 	minValue=4096;
 	for(i=0;i<100;i++){
-		V_aux[i]= fs.readFileSync('/sys/bus/iio/devices/iio:device' + pin + '/in_voltage'+number+'_raw');
+		V_aux[i]= fs.readFileSync('/sys/devices/soc.2/30400000.aips-bus/30610000.adc/iio:device' + pin + '/in_voltage'+number+'_raw');
 		if (V_aux[i]<minValue){
 			minValue=V_aux[i];
 		}
