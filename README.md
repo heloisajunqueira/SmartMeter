@@ -11,7 +11,7 @@ Os sensores de correntes utilizados no projeto foram [ACS712](http://img.filipef
  
 ## Programas
 
-Os programas utilizados para o envio dos dados para a nuvem e como iniciar automaticamente o envio de dados ao ligar o módulo estão na pasta programs.
+Os programas utilizados para o envio dos dados para a nuvem e como iniciar automaticamente o envio de dados ao ligar o módulo estão na pasta [programs](https://github.com/heloisajunqueira/SmartMeter/tree/master/programs).
 A explicação de como foi realizado o cálculo da corrente, a estururação da parte do código responsável pelo envio dos dados para a nuvem e os passos a serem seguidos para iniciar automaticamente este programa estão descritos no README.md dentro da pasta programas
 
 ## Query Stream Analytics
