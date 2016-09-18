@@ -1,6 +1,6 @@
 # SmartMeter
 
-Este projeto consiste em um Demo que envia os dados da corrente medida em 4 tomadas para a nuvem, para este projeto foram utilizados os serviços do Microsoft Azure e para leitura dos sensores foram utilizados os módulos da Toradex.
+Este projeto, SmartMeter, consiste em um programa que envia os dados da corrente medida em 4 tomadas para a nuvem. Para este projeto foram utilizados os serviços do Microsoft Azure e para leitura dos sensores foram utilizados os módulos da Toradex.
 Para enviar os dados para a nuvem foi utilizado utilizado o serviço do [IoT Hub](https://azure.microsoft.com/pt-br/services/iot-hub/) que irá estabelecer a comunicação do dispositivo com a nuvem, utilizando o protocolo de comunicação HTTP. Para processar estes dados na nuvem foi utilizado o [Stream Analytics](https://azure.microsoft.com/pt-pt/services/stream-analytics/).  E para vizualizar estes dados em formas de gráficos, que irão auxiliar na análise e na obtenção de alguns insights sobre este cenário, foi utilizado o [Power BI](https://powerbi.microsoft.com/pt-br/).
 
 ## Materiais
@@ -10,7 +10,7 @@ Os sensores de correntes utilizados no projeto foram [ACS712](http://img.filipef
 
 #Leitura dos Sensores 
 
-Para executar a leitura dos sensores, utilizando os pinos ADC do módulo IMX7, foi utilizada a função `rdADC()` que está entre o comentário Inicio Leitura AC Sensor e Fim Leitura AC Sensor. Este trecho do código irá realizar a leitura do arquivo que contém os dados recebidos através dos pinos do ADC, para isto segue o  [link](http://developer.toradex.com/knowledge-base/adc-(linux)#Colibri_iMX7) de referência da Toradex para a leitura deste arquivo. Esta mesma função também realiza a conversão deste valor, o cálculo utilizado está exemplificado abaixo: 
+Para executar a leitura dos sensores, utilizando os pinos ADC do módulo IMX7, foi utilizada a função `rdADC()`, que está entre o comentário Inicio Leitura AC Sensor e Fim Leitura AC Sensor. Este trecho do código irá realizar a leitura do arquivo que contém os dados recebidos através dos pinos do ADC, para isto segue o  [link](http://developer.toradex.com/knowledge-base/adc-(linux)#Colibri_iMX7) de referência da Toradex para a leitura deste arquivo. Esta mesma função também realiza a conversão deste valor que está em Volts, o cálculo utilizado está exemplificado abaixo: 
 
     Vp=((Vmax-Vmin)*(nivel de tensão do pino ADC))/(resolução do conversor ADC)
     Vrms= (Vp*√2)/2 
@@ -18,9 +18,9 @@ Para executar a leitura dos sensores, utilizando os pinos ADC do módulo IMX7, f
 
 A resolução deste conversor é de 185 mV/A, então declaramos a resolução do conversor como sendo:
 
-  `var VoltsPorUnidade=185`
+    `var VoltsPorUnidade=185`
  
-Porém nesta mesma função `rdADC()` entre o somentário Inicio Dados Fictícios e Fim Dados Fictícios, encontrase a função que gera valores aleatórios para as medidas de corrente. Não havendo a necessidade de leitura do ADC, se a finalidade do seu programa for somente enviar dados para a nuvem, e para isto será somente comentar o trecho descrito anteriormente do código.
+Porém nesta mesma função `rdADC()` ,entre o comentário Inicio Dados Fictícios e Fim Dados Fictícios, encontrase a função que gera valores aleatórios para as medidas de corrente. Não havendo a necessidade de leitura do ADC caso a finalidade do seu programa for somente enviar dados para a nuvem, e para isto será somente comentar o trecho anterior, de leitura do ADC, do código.
 
 A função que irá armazenar a leitura de cada sensor ADC será a função `getAllSensors()`.
 
@@ -33,17 +33,17 @@ Passando agora para a parte de envio dos dados para a nuvem temos duas principai
 
 A primeira função simplesmente chama as funções anteriormente descritas para a leitura e armazenamento dos dados lidos. 
 
-Já a segunda função será responsável por enviar estes dados para a nuvem, mas antes deve ser declarada `connection string` gerada para cada device, o passo a passo de como criar esta connection string encontra-se neste [link](), que servirá para a verificação do dispositivo:
+Já a segunda função será responsável por enviar estes dados para a nuvem, mas antes deverá ser declarada `connection string` gerada para cada device. O passo-a-passo de como criar esta connection string encontra-se neste [link](), que servirá para a verificação do dispositivo:
 
     var connectionString = "HostName=toradex.azure-devices.net;DeviceId=smartmeter;SharedAccessKe=somesharedaccesskeyreturned"
 
-Voltando a função de envio dos dados para a nuvem, esta irá chamar a função `sendToIotHub()`, que irá encapsular os dados obtidos das leituras dos sensores em uma string no formato JSON, através da variável mensagem, em seguida enviado o dado para a nuvem. Se em alguma parte do processo, encapsulamento ou envio da mensagem resultar em algum erro, o mesmo será impresso na tela. Depois desta explicação podemos executar o programa através do comando nodemon abaixo. Se tudo der certo aparecerá a mensagem de enviando para IoT e o formato da string encapsulada e através do portal do IoT Hub poderá ser monitorada as mensagens enviadas para o IoT Hub: 
+Voltando a função de envio dos dados para a nuvem, esta irá chamar a função `sendToIotHub()`, que irá encapsular os dados obtidos das leituras dos sensores em uma string no formato JSON, através da variável mensagem e em seguida enviando os dados para a nuvem. Caso alguma parte do processo, encapsulamento ou envio da mensagem, resultar em algum erro, o mesmo será impresso na tela. Depois desta explicação podemos executar o programa através do comando nodemon abaixo, se tudo der certo aparecerá a mensagem de enviando para IoT e o formato da string encapsulada e através do portal do IoT Hub poderá ser monitorada as mensagens enviadas para o IoT Hub: 
 
     nodemon SendData.js
 
 ##Iniciar automaticamente o envio de dados ao ligar o módulo 
 
-Para configurar o programa para que sempre ao ligar o módulo o programa seja iniciado e executado automaticamente foi utilizado um script de inicialização. Para isso foi criado o script init.sh que é executado através do arquivo Meter.service que deve ser copiado para a pasta `/lib/systemd/system` e habilitado o serviço. Os passos seguintes irão descrever este processo: 
+Para configurar o programa para iniciá-lo automaticamente quando o módulo for ligado foi utilizado um script de inicialização. Para isso foi criado o script [init.sh](https://github.com/heloisajunqueira/SmartMeter/blob/master/init.sh), que é executado através do arquivo [Meter.service](https://github.com/heloisajunqueira/SmartMeter/blob/master/Meter.service), este deve ser copiado para a pasta `/lib/systemd/system` e habilitado o serviço. Os passos seguintes irão descrever este processo: 
 
     cp Meter.service /lib/systemmd/system
     systemctl enable Meter.service 
@@ -54,5 +54,7 @@ Para esta função de iniciação automática do programa seguem alguns comandos
     systemctl status Meter.service -l //mostra o status da execução do programa detalhadamente, adicionando-se o -l detalha-se o processo 
     systemctl stop Meter.service // irá interromper a execução automático do programa`
 
+Se após habilitar o serviço, através do comando `systemctl emable`, e iniciá-lo , através do comando `systemctl enable`e o serviço não for iniciado, certifique-se se o script `init.sh` está como um executável, se não utilizar o seguinte comando:
 
+    
 
