@@ -41,6 +41,15 @@ Voltando a função de envio dos dados para a nuvem, esta irá chamar a função
 
     nodemon SendData.js
 
+
+##Monitorar os dados enviados
+
+Para monitoração dos dados enviados, em seu computador, executar o seguinte script:
+
+    iothub-explorer "your_iothub_connection_string" monitor-events yourdevice  
+
+No lugar de `"your_iothub_connection_string" ` substituir pela connection string do IoT Hub, como segue neste [link](), e no lugar de `your device` substituir pelo nome criado para o seu respectivo device, como segue neste [link]().
+
 ##Iniciar automaticamente o envio de dados ao ligar o módulo 
 
 Para configurar o programa para iniciá-lo automaticamente quando o módulo for ligado foi utilizado um script de inicialização. Para isso foi criado o script [init.sh](https://github.com/heloisajunqueira/SmartMeter/blob/master/init.sh), que é executado através do arquivo [Meter.service](https://github.com/heloisajunqueira/SmartMeter/blob/master/Meter.service), este deve ser copiado para a pasta `/lib/systemd/system` e habilitado o serviço. Os passos seguintes irão descrever este processo: 
