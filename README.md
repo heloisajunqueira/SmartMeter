@@ -52,7 +52,7 @@ No lugar de `"your_iothub_connection_string" ` substituir pela connection string
 
 ##Iniciar automaticamente o envio de dados ao ligar o módulo 
 
-Para configurar o programa para iniciá-lo automaticamente quando o módulo for ligado foi utilizado um script de inicialização. Para isso foi criado o script [init.sh](https://github.com/heloisajunqueira/SmartMeter/blob/master/init.sh), que é executado através do arquivo [Meter.service](https://github.com/heloisajunqueira/SmartMeter/blob/master/Meter.service), este deve ser copiado para a pasta `/lib/systemd/system` e habilitado o serviço. Os passos seguintes irão descrever este processo: 
+Na configuração para inicialização automática do programa sempre que o módulo for energizado foi utilizado um script de inicialização [init.sh](https://github.com/heloisajunqueira/SmartMeter/blob/master/init.sh), que é executado através do arquivo [Meter.service](https://github.com/heloisajunqueira/SmartMeter/blob/master/Meter.service). Para isto este Meter.service deverá ser copiado para a pasta `/lib/systemd/system` e habilitado o serviço. Os passos seguintes irão descrever este processo: 
 
     cp Meter.service /lib/systemmd/system
     systemctl enable Meter.service 
@@ -65,5 +65,5 @@ Para esta função de iniciação automática do programa seguem alguns comandos
 
 Se após habilitar o serviço, através do comando `systemctl emable`, e iniciá-lo , através do comando `systemctl enable`e o serviço não for iniciado, certifique-se se o script `init.sh` está como um executável, se não utilizar o seguinte comando:
 
-    
+    chmod +x init.sh
 
