@@ -3,12 +3,12 @@
 Este projeto, SmartMeter, consiste em um programa que envia os dados da corrente medida em 4 tomadas para a nuvem. Para este projeto foram utilizados os serviços do Microsoft Azure e para leitura dos sensores foram utilizados os módulos da Toradex.
 Para enviar os dados para a nuvem foi utilizado utilizado o serviço do [IoT Hub](https://azure.microsoft.com/pt-br/services/iot-hub/) que irá estabelecer a comunicação do dispositivo com a nuvem, utilizando o protocolo de comunicação HTTP. Para processar estes dados na nuvem foi utilizado o [Stream Analytics](https://azure.microsoft.com/pt-pt/services/stream-analytics/).  E para vizualizar estes dados em formas de gráficos, que irão auxiliar na análise e na obtenção de alguns insights sobre este cenário, foi utilizado o [Power BI](https://powerbi.microsoft.com/pt-br/).
 
-## Materiais
+### Materiais
 
 Os sensores de correntes utilizados no projeto foram [ACS712](http://img.filipeflop.com/files/download/Datasheet_ACS712.pdf) para 5A, o módulo utilizado para leitura destes sensores foram [Toradex Colibri IMX7](http://developer.toradex.com/products/colibri-imx7)  module + [Toradex Viola](http://developer.toradex.com/products/viola-carrier-board) carrier board.
  
 
-#Leitura dos Sensores 
+##Leitura dos Sensores 
 
 Para executar a leitura dos sensores, utilizando os pinos ADC do módulo IMX7, foi utilizada a função `rdADC()`, que está entre o comentário Inicio Leitura AC Sensor e Fim Leitura AC Sensor. Este trecho do código irá realizar a leitura do arquivo que contém os dados recebidos através dos pinos do ADC, para isto segue o  [link](http://developer.toradex.com/knowledge-base/adc-(linux)#Colibri_iMX7) de referência da Toradex para a leitura deste arquivo. Esta mesma função também realiza a conversão deste valor que está em Volts, o cálculo utilizado está exemplificado abaixo: 
 
