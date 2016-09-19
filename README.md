@@ -18,7 +18,7 @@ Para executar a leitura dos sensores, utilizando os pinos ADC do módulo IMX7, f
 
 A resolução deste conversor é de 185 mV/A, então declaramos a resolução do conversor como sendo:
 
-    `var VoltsPorUnidade=185`
+    var VoltsPorUnidade=185
  
 Porém nesta mesma função `rdADC()` ,entre o comentário Inicio Dados Fictícios e Fim Dados Fictícios, encontrase a função que gera valores aleatórios para as medidas de corrente. Não havendo a necessidade de leitura do ADC caso a finalidade do seu programa for somente enviar dados para a nuvem, e para isto será somente comentar o trecho anterior, de leitura do ADC, do código.
 
